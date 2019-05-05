@@ -8,6 +8,9 @@
 
 <body>
   <div class="city"></div>
+  <div class="latitude"></div>
+  <div class="longitude"></div>
+  <br />
   <div class="wind"></div>
   <div class="humidity"></div>
   <div class="temp"></div>
@@ -21,7 +24,7 @@
       url: queryURL,
       method: "GET"
     })
-      .then(function(response) {
+      .then(function (response) {
 
         // Log the queryURL
         console.log(queryURL);
@@ -30,7 +33,10 @@
         console.log(response);
 
         $(".city").html("<h1>" + response.name + " Weather Details</h1>");
-        $(".wind").text("Wind Speed: " + response.wind.speed);
+        $(".latitude").text("Latitude: " + response.coord.lat);
+        $(".longitude").text("Longitude: " + response.coord.lon);
+
+        $(".wind").text("Wind Speed: " + response.wind.direction);
         $(".humidity").text("Humidity: " + response.main.humidity);
         $(".temp").text("Temperature (C) " + response.main.temp);
 
