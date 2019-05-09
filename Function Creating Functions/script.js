@@ -11,3 +11,4 @@ function betweenTwoNumbers(n1, n2) {
 
 let between2And8 = betweenTwoNumbers(2, 8);
 console.log(between2And8(10));
+console.log(between2And8(5));
