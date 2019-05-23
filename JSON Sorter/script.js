@@ -1128,3 +1128,4 @@ var SCRIPTS = [
   }
   
   console.log(filter(SCRIPTS, script => script.living));
+  console.log(SCRIPTS.filter(s => s.direction == "ttb"));
