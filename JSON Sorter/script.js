@@ -1,16 +1,5 @@
 
 
-
-
-
-
-
-
-
-
-
-
-
 // SCRIPTS object via ejs c. 5
 
 var SCRIPTS = [
@@ -1127,3 +1116,15 @@ var SCRIPTS = [
       link: "https://en.wikipedia.org/wiki/Mongolian_writing_systems#Horizontal_square_script"
     }
   ];
+
+  let filter = (array, test) => {
+    let passed = [];
+    for (let element of array) {
+      if (test(element)) {
+        passed.push(element);
+      }
+    }
+    return passed;
+  }
+  
+  console.log(filter(SCRIPTS, script => script.living));
