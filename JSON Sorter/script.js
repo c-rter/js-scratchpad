@@ -1135,4 +1135,26 @@ let filter = (array, test) => {
 // console.log(SCRIPTS.filter(script => script.living));
 
 // test for 20th century scripts using built in filter function on array with arbitrary parameter name in test
-console.log(SCRIPTS.filter(goobyGoob => goobyGoob.year > 1899 && goobyGoob.year < 2000));
+// console.log(SCRIPTS.filter(goobyGoob => goobyGoob.year > 1899 && goobyGoob.year < 2000));
+
+/*
+function map(array, transform) {
+  let mapped = [];
+  for (let element of array) {
+    mapped.push(transform(element));
+  }
+  return mapped;
+}
+*/
+let rtlScripts = SCRIPTS.filter(s => s.direction == "rtl");
+// console.log(map(rtlScripts, s => s.name));
+// console.log(rtlScripts.map(s => s.living));
+// → ["Adlam", "Arabic", "Imperial Aramaic", …]
+
+// console.log(SCRIPTS.map(hello => hello.living));
+
+let transformativeFunction = (param1) => {
+  return param1.living;
+}
+
+console.log(SCRIPTS.map(transformativeFunction));
