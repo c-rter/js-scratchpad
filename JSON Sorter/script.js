@@ -1146,15 +1146,25 @@ function map(array, transform) {
   return mapped;
 }
 */
-let rtlScripts = SCRIPTS.filter(s => s.direction == "rtl");
+// let rtlScripts = SCRIPTS.filter(s => s.direction == "rtl");
 // console.log(map(rtlScripts, s => s.name));
 // console.log(rtlScripts.map(s => s.living));
 // → ["Adlam", "Arabic", "Imperial Aramaic", …]
 
 // console.log(SCRIPTS.map(hello => hello.living));
 
-let transformativeFunction = (param1) => {
+/* let transformativeFunction = (param1) => {
   return param1.living;
+} */
+
+// console.log(SCRIPTS.map(transformativeFunction));
+
+
+// forEach exercise
+
+let transformativeFunction2 = (param1) => {
+  param1.direction = "altered Object";
 }
 
-console.log(SCRIPTS.map(transformativeFunction));
+SCRIPTS.forEach(transformativeFunction2);
+console.log(SCRIPTS);
