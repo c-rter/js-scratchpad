@@ -1129,7 +1129,6 @@ let filter = (array, test) => {
 }  
 */
 
-
 // console.log(filter(SCRIPTS, script => script.living));
 // console.log(SCRIPTS.filter(s => s.direction == "ttb"));
 // console.log(SCRIPTS.filter(script => script.living));
@@ -1162,9 +1161,31 @@ function map(array, transform) {
 
 // forEach exercise
 
-let transformativeFunction2 = (param1) => {
+/* let transformativeFunction2 = (param1) => {
   param1.direction = "altered Object";
 }
 
 SCRIPTS.forEach(transformativeFunction2);
-console.log(SCRIPTS);
+console.log(SCRIPTS); */
+
+// reduce examples ejs c5
+
+function reduce(array, combine, start) {
+  let current = start;
+  for (let element of array) {
+    current = combine(current, element);
+  }
+  return current;
+}
+
+console.log(reduce([1, 2, 3, 4], (a, b) => a + b, 0));
+
+function characterCount(script) {
+  return script.ranges.reduce((count, [from, to]) => {
+    return count + (to - from);
+  }, 0);
+}
+
+console.log(SCRIPTS.reduce((a, b) => {
+  return characterCount(a) < characterCount(b) ? b : a;
+}));
