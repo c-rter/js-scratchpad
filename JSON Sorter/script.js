@@ -1169,7 +1169,7 @@ SCRIPTS.forEach(transformativeFunction2);
 console.log(SCRIPTS); */
 
 // reduce examples ejs c5
-
+/*
 function reduce(array, combine, start) {
   let current = start;
   for (let element of array) {
@@ -1179,6 +1179,7 @@ function reduce(array, combine, start) {
 }
 
 console.log(reduce([1, 2, 3, 4], (a, b) => a + b, 0));
+*/
 
 function characterCount(script) {
   return script.ranges.reduce((count, [from, to]) => {
@@ -1187,5 +1188,6 @@ function characterCount(script) {
 }
 
 console.log(SCRIPTS.reduce((a, b) => {
-  return characterCount(a) < characterCount(b) ? b : a;
+  console.log(a.name + ": " + characterCount(a));
+  return characterCount(a) > characterCount(b) ? b : a;
 }));
