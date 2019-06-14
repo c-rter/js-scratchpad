@@ -1181,6 +1181,8 @@ function reduce(array, combine, start) {
 console.log(reduce([1, 2, 3, 4], (a, b) => a + b, 0));
 */
 
+/*
+
 function characterCount(script) {
   return script.ranges.reduce((count, [from, to]) => {
     return count + (to - from);
@@ -1191,3 +1193,9 @@ console.log(SCRIPTS.reduce((a, b) => {
   console.log(a.name + ": " + characterCount(a));
   return characterCount(a) > characterCount(b) ? b : a;
 }));
+
+*/
+
+// Composing operations through combination of higher order functions
+// Ex. Create average amount of characters per language for all scripts
+
