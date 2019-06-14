@@ -1225,4 +1225,5 @@ function characterCount(script) {
   }, 0);
 }
 
-
+console.log(SCRIPTS.map(s => characterCount(s)));
+console.log("average character amount: " + average(SCRIPTS.map(s => characterCount(s)))); 
