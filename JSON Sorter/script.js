@@ -1197,5 +1197,32 @@ console.log(SCRIPTS.reduce((a, b) => {
 */
 
 // Composing operations through combination of higher order functions
+
+/* 
+
+function average(array) {
+  return array.reduce((a, b) => a + b) / array.length;
+}
+
+console.log(Math.round(average(
+  SCRIPTS.filter(s => s.living).map(s => s.year))));
+// → 1188
+console.log(Math.round(average(
+  SCRIPTS.filter(s => !s.living).map(s => s.year))));
+// → 188
+
+*/
+
 // Ex. Create average amount of characters per language for all scripts
+
+function average(array) {
+  return array.reduce((a, b) => a + b) / array.length;
+}
+
+function characterCount(script) {
+  return script.ranges.reduce((count, [from, to]) => {
+    return count + (to - from);
+  }, 0);
+}
+
 
