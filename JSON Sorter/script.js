@@ -1137,6 +1137,7 @@ let filter = (array, test) => {
 // console.log(SCRIPTS.filter(goobyGoob => goobyGoob.year > 1899 && goobyGoob.year < 2000));
 
 /*
+
 function map(array, transform) {
   let mapped = [];
   for (let element of array) {
@@ -1166,10 +1167,9 @@ function map(array, transform) {
 }
 
 SCRIPTS.forEach(transformativeFunction2);
-console.log(SCRIPTS); */
+console.log(SCRIPTS); 
 
 // reduce examples ejs c5
-/*
 function reduce(array, combine, start) {
   let current = start;
   for (let element of array) {
@@ -1179,9 +1179,8 @@ function reduce(array, combine, start) {
 }
 
 console.log(reduce([1, 2, 3, 4], (a, b) => a + b, 0));
-*/
 
-/*
+
 
 function characterCount(script) {
   return script.ranges.reduce((count, [from, to]) => {
@@ -1194,11 +1193,9 @@ console.log(SCRIPTS.reduce((a, b) => {
   return characterCount(a) > characterCount(b) ? b : a;
 }));
 
-*/
 
 // Composing operations through combination of higher order functions
 
-/* 
 
 function average(array) {
   return array.reduce((a, b) => a + b) / array.length;
@@ -1211,7 +1208,6 @@ console.log(Math.round(average(
   SCRIPTS.filter(s => !s.living).map(s => s.year))));
 // → 188
 
-*/
 
 // Ex. Create average amount of characters per language for all scripts
 
@@ -1227,3 +1223,22 @@ function characterCount(script) {
 
 console.log(SCRIPTS.map(s => characterCount(s)));
 console.log("average character amount: " + average(SCRIPTS.map(s => characterCount(s)))); 
+
+*/
+
+// Ex. Less easy to read loop that does the same thing
+
+function characterCount(script) {
+  return script.ranges.reduce((count, [from, to]) => {
+    return count + (to - from);
+  }, 0);
+}
+
+let total = 0, count = 0;
+for (let script of SCRIPTS) {
+total += characterCount(script);
+count++;
+}
+
+console.log(Math.round(total/count));
+
