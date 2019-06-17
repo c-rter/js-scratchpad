@@ -1224,8 +1224,6 @@ function characterCount(script) {
 console.log(SCRIPTS.map(s => characterCount(s)));
 console.log("average character amount: " + average(SCRIPTS.map(s => characterCount(s)))); 
 
-*/
-
 // Ex. Less easy to read loop that does the same thing
 
 function characterCount(script) {
@@ -1242,3 +1240,31 @@ count++;
 
 console.log(Math.round(total/count));
 
+
+function characterScript(code) {
+  for (let script of SCRIPTS) {
+    if (script.ranges.some(([from, to]) => {
+      return code >= from && code < to;
+    })) {
+      return script;
+    }
+  }
+  return null;
+}
+
+console.log(characterScript(121));
+// → {name: "Latin", …}
+
+// .some functions
+
+*/
+
+
+function isGreaterThan10(element, index, array) 
+{
+  console.log(index);
+  console.log(element);
+  return element > 10;
+}
+
+console.log([2, 5, 11, 1, 4].some(isGreaterThan10));
