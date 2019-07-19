@@ -43,7 +43,7 @@ normalize.call({ coords: [0, 2, 3], length: 5 });
 normalize2.call({ coords: [0, 2, 3], length: 5 });
 // → [0, 0.4, 0.6]
 
-*/
+
 
 // EXPERINMENTS WITH THIS FUNCTION BINDINGS
 
@@ -52,3 +52,17 @@ function speak(line) {
   }
 
 speak("test");
+
+*/
+
+// EXPIRIMENTS WITH FUNCTION BINDING 2
+
+function emptyThis () {
+console.log(`${this.type}`);
+console.log(this.type);
+}
+
+emptyThis();
+
+let objectTest = {type:"hello", emptyThis}
+objectTest.emptyThis();
