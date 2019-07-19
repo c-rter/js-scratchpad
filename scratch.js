@@ -17,7 +17,7 @@ let hungryRabbit = { type: "hungry", speak };
 whiteRabbit.speak("Oh my ears and whiskers, " +
     "how late it's getting!");
 
-hungryRabbit.speak("I could use a carrot right now."); */
+hungryRabbit.speak("I could use a carrot right now."); 
 
 // DIFFERENCE BETWEEN ARROW FUNCTIONS AND FUNCTION KEYWORD IN REGARDS TO THIS BINDING
 
@@ -43,3 +43,12 @@ normalize.call({ coords: [0, 2, 3], length: 5 });
 normalize2.call({ coords: [0, 2, 3], length: 5 });
 // → [0, 0.4, 0.6]
 
+*/
+
+// EXPERINMENTS WITH THIS FUNCTION BINDINGS
+
+function speak(line) {
+    console.log(`The ${this.type} rabbit says '${line}'`);
+  }
+
+speak("test");
