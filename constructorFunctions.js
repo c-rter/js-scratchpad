@@ -25,3 +25,5 @@ let protoRabbit = {
   let killerRabbit3 = protoRabbit3;
   killerRabbit3.type = "killer3";
   killerRabbit3.speak("SKREEEE!3");
+  console.log(Object.getPrototypeOf(killerRabbit2));
+  console.log(Object.getPrototypeOf(killerRabbit3));
