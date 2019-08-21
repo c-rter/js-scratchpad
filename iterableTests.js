@@ -17,5 +17,5 @@ class StoreNum {
 }
 
 let storeThisNum = new StoreNum(1, 2);
-storeThisNum.set(3, 4);
+storeThisNum.set(2, 10);
 console.log(storeThisNum.get());
