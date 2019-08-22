@@ -1,9 +1,14 @@
-class numInterator {
+class numIterator {
     constructor(numStore) {
-        this.passedObjectVal1 = numStore.get().num1;
+        this.num1 = numStore.get().num1;
+        this.num2 = numStore.get().num2;
     }
-    get () {
-        return this.passedObjectVal1;
+    next() {
+        while (this.num1 < this.num2) {
+            this.num1++;
+            return { value: "hello", done: false };
+        }
+        return { done: true };
     }
 }
 
@@ -22,8 +27,18 @@ class StoreNum {
     }
 }
 
+StoreNum.prototype[Symbol.iterator] = function() {
+    return new numIterator(this);
+};
+
 let storeThisNum = new StoreNum(1, 2);
 storeThisNum.set(2, 10);
 console.log(storeThisNum.get());
-let iteratorTest = new numInterator (storeThisNum);
-console.log(iteratorTest.get());
+for (let val of storeThisNum) {
+    console.log(val);
+}
+console.log("break");
+storeThisNum.set(1, 4);
+for (let val of storeThisNum) {
+    console.log(val);
+}
