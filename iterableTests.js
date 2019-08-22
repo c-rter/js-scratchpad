@@ -25,11 +25,20 @@ class StoreNum {
         this.num1 = startNum;
         this.num2 = endNum;
     }
+    
+    [Symbol.iterator] () {
+        return new numIterator(this);
+    }
+
 }
+
+/*
 
 StoreNum.prototype[Symbol.iterator] = function() {
     return new numIterator(this);
 };
+
+*/
 
 let storeThisNum = new StoreNum(1, 2);
 storeThisNum.set(2, 10);
@@ -42,3 +51,4 @@ storeThisNum.set(1, 4);
 for (let val of storeThisNum) {
     console.log(val);
 }
+console.log(StoreNum.prototype[Symbol.iterator]);
