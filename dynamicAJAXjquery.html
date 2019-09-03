@@ -1,0 +1,46 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>The HTML5 Herald</title>
+    <meta name="description" content="cool ajax website">
+    <meta name="author" content="c-rter">
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+</head>
+
+<body>
+    <div id="searchSpot">
+        Enter Drink
+        <input type="text" id="drinkField" value="Margarita">
+        <input type="submit" id="drinkButton" value="Submit">
+    </div>
+    <div id="contentSpot"></div>
+    <script>
+
+        let searchDrink = (drink) => {
+            $.ajax({ url: "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita", method: "GET" })
+                .then(function (data) {
+                    console.log(data);
+                    generator(data);
+                });
+        };
+
+        let generator = (drinkData) => {
+            for (drink of drinkData.drinks) {                
+                console.log(drink.strDrink);
+            }
+        }
+
+        $("#drinkButton").click(function () {
+            searchDrink($("#drinkField").val());
+        }
+        );
+
+
+    </script>
+</body>
+
+</html>
