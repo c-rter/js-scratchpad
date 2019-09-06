@@ -15,13 +15,14 @@
     <div id="searchSpot">
         Enter Drink
         <input type="text" id="drinkField" value="Margarita">
-        <input type="submit" id="drinkButton" value="Submit">
+        <input type="submit" id="drinkButton" value="Submit" autofocus>
     </div>
     <div id="contentSpot"></div>
     <script>
 
+        let contentDiv = $("<div>");
+
         let searchDrink = (drink) => {
-            console.log(drink);
             $.ajax({ url: "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + drink, method: "GET" })
                 .then(function (data) {
                     console.log(data);
@@ -30,9 +31,13 @@
         };
 
         let generator = (drinkData) => {
-            let contentDiv = $("<div>");
+            contentDiv.empty();
             for (drink of drinkData.drinks) {
+                console.log(drink);
+                contentDiv.append("<h1>" + drink.strDrink + "</h1>");
             }
+            $("#contentSpot").empty();
+            $("#contentSpot").append(contentDiv);
         }
 
         $("#drinkButton").click(function () {
