@@ -35,6 +35,7 @@
             for (drink of drinkData.drinks) {
                 console.log(drink);
                 contentDiv.append("<h1>" + drink.strDrink + "</h1>");
+                contentDiv.append('<img src="' + drink.strDrinkThumb + '">')
             }
             $("#contentSpot").empty();
             $("#contentSpot").append(contentDiv);
