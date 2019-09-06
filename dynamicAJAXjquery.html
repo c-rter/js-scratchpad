@@ -22,7 +22,7 @@
 
         let searchDrink = (drink) => {
             console.log(drink);
-            $.ajax({ url: "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita", method: "GET" })
+            $.ajax({ url: "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + drink, method: "GET" })
                 .then(function (data) {
                     console.log(data);
                     generator(data);
