@@ -4,9 +4,9 @@ class numIterator {
         this.num2 = numStore.get().num2;
     }
     next() {
-        while (this.num1 < this.num2) {
+        while (this.num1 <= this.num2) {
             this.num1++;
-            return { value: "hello", done: false };
+            return { value: this.num1-1, done: false };
         }
         return { done: true };
     }
