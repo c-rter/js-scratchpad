@@ -21,6 +21,7 @@
     <script>
 
         let searchDrink = (drink) => {
+            console.log(drink);
             $.ajax({ url: "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita", method: "GET" })
                 .then(function (data) {
                     console.log(data);
@@ -30,7 +31,7 @@
 
         let generator = (drinkData) => {
             let contentDiv = $("<div>");
-            for (drink of drinkData.drinks) {               
+            for (drink of drinkData.drinks) {
             }
         }
 
