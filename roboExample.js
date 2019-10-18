@@ -26,7 +26,18 @@ function buildGraph(edges) {
 
 const roadGraph = buildGraph(roads);
 
-console.log(roadGraph);
+
+/* { 'Alice\'s House': [ 'Bob\'s House', 'Cabin', 'Post Office' ],
+  'Bob\'s House': [ 'Alice\'s House', 'Town Hall' ],
+  Cabin: [ 'Alice\'s House' ],
+  'Post Office': [ 'Alice\'s House', 'Marketplace' ],
+  'Town Hall': [ 'Bob\'s House', 'Daria\'s House', 'Marketplace', 'Shop' ],
+  'Daria\'s House': [ 'Ernie\'s House', 'Town Hall' ],
+  'Ernie\'s House': [ 'Daria\'s House', 'Grete\'s House' ],
+  'Grete\'s House': [ 'Ernie\'s House', 'Farm', 'Shop' ],
+  Farm: [ 'Grete\'s House', 'Marketplace' ],
+  Shop: [ 'Grete\'s House', 'Marketplace', 'Town Hall' ],
+  Marketplace: [ 'Farm', 'Post Office', 'Shop', 'Town Hall' ] } */
 
 class VillageState {
     constructor(place, parcels) {
@@ -41,7 +52,14 @@ class VillageState {
             let parcels = this.parcels.map(p => {
                 if (p.place != this.place) return p;
                 return { place: destination, address: p.address };
-            }).filter(p => p.place != p.address);
+            });
+        for (let p of parcels) {
+            if (p.place == p.address) {
+                console.log(`Package dropped off: "${JSON.stringify(p)}"`);
+            }
+        }
+            parcels = parcels.filter(p => p.place != p.address);
+
             return new VillageState(destination, parcels);
         }
     }
@@ -79,6 +97,7 @@ function runRobot(state, robot, memory) {
       } while (place == address);
       parcels.push({place, address});
     }
+    console.log(parcels);
     return new VillageState("Post Office", parcels);
   };
 
