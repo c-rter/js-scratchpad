@@ -1,3 +1,5 @@
+// List of Road Connections
+
 const roads = [
   "Alice's House-Bob's House", "Alice's House-Cabin",
   "Alice's House-Post Office", "Bob's House-Town Hall",
@@ -7,6 +9,8 @@ const roads = [
   "Marketplace-Post Office", "Marketplace-Shop",
   "Marketplace-Town Hall", "Shop-Town Hall"
 ];
+
+// Graph Builder
 
 function buildGraph(edges) {
   let graph = Object.create(null);
@@ -39,6 +43,8 @@ const roadGraph = buildGraph(roads);
   Shop: [ 'Grete\'s House', 'Marketplace', 'Town Hall' ],
   Marketplace: [ 'Farm', 'Post Office', 'Shop', 'Town Hall' ] } */
 
+// Village State Class
+
 class VillageState {
   constructor(place, parcels) {
     this.place = place;
@@ -65,6 +71,8 @@ class VillageState {
   }
 }
 
+// Function to Run Various Types of Robots
+
 function runRobot(state, robot, memory) {
   console.log(state);
   for (let turn = 0; ; turn++) {
@@ -79,14 +87,14 @@ function runRobot(state, robot, memory) {
   }
 }
 
+// Randomizer Function
+
 function randomPick(array) {
   let choice = Math.floor(Math.random() * array.length);
   return array[choice];
 }
 
-function randomRobot(state) {
-  return { direction: randomPick(roadGraph[state.place]) };
-}
+// Create a Random State
 
 VillageState.random = function (parcelCount = 5) {
   let parcels = [];
@@ -102,7 +110,21 @@ VillageState.random = function (parcelCount = 5) {
   return new VillageState("Post Office", parcels);
 };
 
+
+// Robot Type I - Random ---------------------
+
+function randomRobot(state) {
+  return { direction: randomPick(roadGraph[state.place]) };
+}
+
 // runRobot(VillageState.random(), randomRobot);
+
+// ------------------------------------------
+
+
+
+
+// Robot Type II - Pre-determined Route --------------
 
 const mailRoute = [
   "Alice's House", "Cabin", "Alice's House", "Bob's House",
@@ -118,4 +140,39 @@ function routeRobot(state, memory) {
   return {direction: memory[0], memory: memory.slice(1)};
 }
 
-runRobot(VillageState.random(), routeRobot, []);
+// runRobot(VillageState.random(), routeRobot, []);
+
+// ---------------------------------------------------
+
+
+
+// Robot Type III - Smart Route Calculator ----------
+
+function findRoute(graph, from, to) {
+  let work = [{at: from, route: []}];
+  for (let i = 0; i < work.length; i++) {
+    let {at, route} = work[i];
+    for (let place of graph[at]) {
+      if (place == to) return route.concat(place);
+      if (!work.some(w => w.at == place)) {
+        work.push({at: place, route: route.concat(place)});
+      }
+    }
+  }
+}
+
+function goalOrientedRobot({place, parcels}, route) {
+  if (route.length == 0) {
+    let parcel = parcels[0];
+    if (parcel.place != place) {
+      route = findRoute(roadGraph, place, parcel.place);
+    } else {
+      route = findRoute(roadGraph, place, parcel.address);
+    }
+  }
+  return {direction: route[0], memory: route.slice(1)};
+}
+
+runRobot(VillageState.random(), goalOrientedRobot, []);
+
+// --------------------------------------------------------
