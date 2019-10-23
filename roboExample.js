@@ -59,6 +59,7 @@ class VillageState {
         if (p.place != this.place) return p;
         return { place: destination, address: p.address };
       });
+      console.log(parcels);
       for (let p of parcels) {
         if (p.place == p.address) {
           console.log(`Package dropped off: "${JSON.stringify(p)}"`);
@@ -166,8 +167,10 @@ function goalOrientedRobot({place, parcels}, route) {
     let parcel = parcels[0];
     if (parcel.place != place) {
       route = findRoute(roadGraph, place, parcel.place);
+      console.log(route);
     } else {
       route = findRoute(roadGraph, place, parcel.address);
+      console.log(route);
     }
   }
   return {direction: route[0], memory: route.slice(1)};

@@ -11,7 +11,7 @@ console.log(newArr3);
 let newArr4 = newArr3.reduce((a, b) => a + " " + b);
 
 console.log(newArr4);
-// 3, 4, 5, 6
+// 3 4 5 6
 console.log(typeof newArr4);
 // string
 
