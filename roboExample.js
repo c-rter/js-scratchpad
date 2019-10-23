@@ -59,7 +59,7 @@ class VillageState {
         if (p.place != this.place) return p;
         return { place: destination, address: p.address };
       });
-      console.log(parcels);
+      console.log(`Current Packages: ${JSON.stringify(parcels.filter(p => p.place == destination))}`);
       for (let p of parcels) {
         if (p.place == p.address) {
           console.log(`Package dropped off: "${JSON.stringify(p)}"`);
@@ -75,7 +75,7 @@ class VillageState {
 // Function to Run Various Types of Robots
 
 function runRobot(state, robot, memory) {
-  console.log(state);
+  console.log(`Current State: ${state}`);
   for (let turn = 0; ; turn++) {
     if (state.parcels.length == 0) {
       console.log(`Done in ${turn} turns`);
@@ -85,6 +85,7 @@ function runRobot(state, robot, memory) {
     state = state.move(action.direction);
     memory = action.memory;
     console.log(`Moved to ${action.direction}`);
+    console.log(`-----------------------------------------------------`);
   }
 }
 
@@ -167,10 +168,10 @@ function goalOrientedRobot({place, parcels}, route) {
     let parcel = parcels[0];
     if (parcel.place != place) {
       route = findRoute(roadGraph, place, parcel.place);
-      console.log(route);
+      console.log(`Current Route: ${route}`);
     } else {
       route = findRoute(roadGraph, place, parcel.address);
-      console.log(route);
+      console.log(`Current Route: ${route}`);
     }
   }
   return {direction: route[0], memory: route.slice(1)};
