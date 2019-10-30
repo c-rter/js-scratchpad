@@ -163,17 +163,20 @@ function findRoute(graph, from, to) {
   }
 }
 
+// function finds picks up first parcel in array of parcels, then delivers 1 by 1. If it already has picked up the first parcel, it goes directly to delivery location. 
+
 function goalOrientedRobot({place, parcels}, route) {
   if (route.length == 0) {
     let parcel = parcels[0];
     if (parcel.place != place) {
       route = findRoute(roadGraph, place, parcel.place);
-      console.log(`Current Route: ${route}`);
+      // Finds a route to the first parcel if none are currently carried
     } else {
       route = findRoute(roadGraph, place, parcel.address);
-      console.log(`Current Route: ${route}`);
+      // Finds a route for the first parcel in an array's destination, if carried
     }
   }
+  console.log(`Current Route: ${route}`);
   return {direction: route[0], memory: route.slice(1)};
 }
 
