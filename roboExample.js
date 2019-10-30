@@ -75,7 +75,7 @@ class VillageState {
 // Function to Run Various Types of Robots
 
 function runRobot(state, robot, memory) {
-  console.log(`Current State: ${state}`);
+  console.log(`Current State: ${JSON.stringify(state)}`);
   for (let turn = 0; ; turn++) {
     if (state.parcels.length == 0) {
       console.log(`Done in ${turn} turns`);
