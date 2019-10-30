@@ -59,10 +59,10 @@ class VillageState {
         if (p.place != this.place) return p;
         return { place: destination, address: p.address };
       });
-      console.log(`Package picked up: ${JSON.stringify(parcels.filter(p => p.place == destination))}`);
+      console.log(`Packages on hand: ${JSON.stringify(parcels.filter(p => p.place == destination))}`);
       for (let p of parcels) {
         if (p.place == p.address) {
-          console.log(`Package dropped off: "${JSON.stringify(p)}"`);
+          console.log(`Packages dropped off: "${JSON.stringify(p)}"`);
         }
       }
       parcels = parcels.filter(p => p.place != p.address);
