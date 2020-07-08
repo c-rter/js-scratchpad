@@ -59,13 +59,15 @@ class VillageState {
         }
 
         let par = this.parcels.map(n => {
-            console.log(n);
+            console.log(n.place);
+            console.log(destination);
+            console.log(this.place);
             if (n.place == this.place) {
                 n.place = destination;
             }
 
-        }).filter(n => {n.place != n.address});
-
+        });
+        console.log(par);
         return new VillageState(destination, par);
 
 
