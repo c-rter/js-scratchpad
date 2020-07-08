@@ -5,7 +5,7 @@ const roads = [
     "Alice's House-Post Office", "Bob's House-Town Hall",
     "Daria's House-Ernie's House", "Daria's House-Town Hall",
     "Ernie's House-Grete's House", "Grete's House-Farm",
-    "Grete's House-Shop", "Marketplace-Farm",
+    "Grete's House-Shop", "Marketplace-Farm",g
     "Marketplace-Post Office", "Marketplace-Shop",
     "Marketplace-Town Hall", "Shop-Town Hall"
 ];
@@ -42,3 +42,16 @@ class roadMap {
 }
 
 console.log(new roadMap(roads));
+
+//let first = new VillageState( "Post Office", [{place: "Post Office", address: "Alice's House"}]);
+
+class VillageState {
+
+    constructor(place, parcels) {
+
+    }
+    
+    move(destination) {
+
+    }
+}
