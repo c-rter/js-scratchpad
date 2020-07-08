@@ -60,13 +60,15 @@ class VillageState {
 
         let par = this.parcels.map(n => {
             console.log(n.place);
-            console.log(destination);
-            console.log(this.place);
+            console.log(n);
             if (n.place == this.place) {
                 n.place = destination;
             }
-
+            console.log(n.place);
+            console.log(n);
+            return n;
         });
+        console.log(this.parcels);
         console.log(par);
         return new VillageState(destination, par);
 
@@ -77,6 +79,6 @@ class VillageState {
 let first = new VillageState("Post Office", [{ place: "Post Office", address: "Alice's House" }]);
 let next = first.move("Alice's House");
 
-console.log(next.place);      // → Alice's House
-console.log(next.parcels);    // → []
-console.log(first.place);     // → Post Office 
+//console.log(next.place);      // → Alice's House
+//console.log(next.parcels);    // → []
+//console.log(first.place);     // → Post Office 
