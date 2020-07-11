@@ -142,19 +142,16 @@ function goalOrientedRobot2({ place, parcels }, route) {
             } 
 
         }
-        console.log(parcels);
-        console.log(parcels[0].place);
-        console.log(bestRoute.length);
-        console.log(place);
+
         if (bestRoute.length==0) {
             route = findRoute(roadGraph, place, parcels[0].place);
-            console.log(route);
             return { direction: route[0], memory: route.slice(1)};
         }
         else {
             return { direction: bestRoute[0], memory: bestRoute.slice(1) };
         }
     }
+    return { direction: route[0], memory: route.slice(1) };
 
 
 }
@@ -162,14 +159,14 @@ function goalOrientedRobot2({ place, parcels }, route) {
 function runRobot2(state, robot, memory) {
     for (let turn = 0; ; turn++) {
         if (state.parcels.length == 0) {
-            //   console.log(`Done in ${turn} turns`);
+               console.log(`Done in ${turn} turns`);
             return turn;
             break;
         }
         let action = robot(state, memory);
         state = state.move(action.direction);
         memory = action.memory;
-        //    console.log(`Moved to ${action.direction}`);
+            console.log(`Moved to ${action.direction}`);
     }
 }
 
